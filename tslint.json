@@ -1,0 +1,45 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-eslint-rules"],
+  "jsRules": {},
+  "rules": {
+    "object-curly-spacing": true,
+    "whitespace": [
+      true,
+      "check-type",
+      "check-branch",
+      "check-typecast",
+      "check-preblock",
+      "check-postbrace",
+      "check-module",
+      "check-operator",
+      "check-decl",
+      "check-separator"
+    ],
+    "no-irregular-whitespace": true,
+    "no-trailing-whitespace": true,
+    "space-before-function-paren": true,
+    "semicolon": true,
+    "quotemark": [true, "single"],
+    "eofline": true,
+    "max-line-length": [true, 120],
+    "no-console": [true],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "object": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        },
+        "singleline": {
+          "object": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ]
+  }
+}
