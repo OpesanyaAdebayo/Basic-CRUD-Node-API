@@ -23,7 +23,7 @@ import {
 const app: express.Express = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: ['http://localhost:3000', 'https://stock-system-frontend.herokuapp.com', ],
 }));
 
 app.use(bodyParser.json());
