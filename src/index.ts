@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import express, { Request, Response } from 'express';
+import express, { Request } from 'express';
 
 import {
   validateAuthDetails,
