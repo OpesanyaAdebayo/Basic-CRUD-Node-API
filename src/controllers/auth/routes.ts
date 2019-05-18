@@ -119,9 +119,10 @@ export const resetPassword = async (req: Request, res: Response) => {
     await sendEmail(emailOptions);
     return res.json({
       message: 'Verification email has been sent.',
-        success: true,
+      success: true,
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       error: 'There was an error. Please try again.',
       success: false
