@@ -55,7 +55,7 @@ export const validatePassword = async (req: Request, res: Response, next: NextFu
     if (!user) {
       return res
       .status(401)
-      .json({ success: false, error: 'Email not found.' });
+      .json({ success: false, error: 'Invalid email/password combination.' });
     }
 
     const passwordMatch = await user.comparePassword(password);

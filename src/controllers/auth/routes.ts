@@ -59,7 +59,7 @@ export const changePassword = async (req: Request, res: Response) => {
     if (!user) {
       return res
         .status(401)
-        .json({ success: false, error: 'Email not found.' });
+        .json({ success: false, error: 'Invalid email/password combination.' });
     }
 
     const passwordMatch = await user.comparePassword(oldPassword);
@@ -108,7 +108,7 @@ export const resetPassword = async (req: Request, res: Response) => {
     const hashedToken = await hashPasswordPromise(randomToken, 12);
     await redisAsync.hmset([randomToken, 'token', hashedToken, 'email', email, ]);
     await redisAsync.expire(randomToken, 3600);
-    const passwordResetLink  = `127.0.0.1:4000/v1/resetuserpasswordwithlink/${randomToken}`;
+    const passwordResetLink  = `https://stock-system-frontend.herokuapp.com/auth/resetpassword/${randomToken}`;
     const emailToUser = generateEmailForPasswordReset(passwordResetLink);
     const emailOptions = {
       from: NODEMAILER_USER,
