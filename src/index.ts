@@ -26,7 +26,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req: Request, res: Response) => {
+app.use((req: Request, _) => {
   console.log(req.body);
 });
 app.post('/v1/login', validateAuthDetails, validatePassword, login);
