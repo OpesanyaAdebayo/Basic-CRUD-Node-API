@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import express, { Request } from 'express';
+import express from 'express';
 
 import {
   validateAuthDetails,
@@ -21,14 +21,13 @@ import {
 
 const app: express.Express = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req: Request, _) => {
-  console.log(req.body);
-});
 app.post('/v1/login', validateAuthDetails, validatePassword, login);
 app.post('/v1/signup', validateAuthDetails, signup);
 app.post('/v1/resetpassword', validateEmail, resetPassword);
