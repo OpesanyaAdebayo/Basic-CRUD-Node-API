@@ -4,7 +4,8 @@
   "description": "Stock system for Osagie",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copyStaticAssets",
+    "copyStaticAssets": "ts-node copyStaticAssets.ts",
     "postinstall": "npm run build",
     "start": "node dist/server.js",
     "test": "jest --detectOpenHandles --forceExit"
@@ -33,6 +34,8 @@
     "nodemailer": "^6.1.1",
     "nunjucks": "^3.2.0",
     "redis": "^2.8.0",
+    "shelljs": "^0.8.3",
+    "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.4.5",
@@ -50,6 +53,7 @@
     "@types/nodemailer": "^4.6.8",
     "@types/nunjucks": "^3.1.1",
     "@types/redis": "^2.8.12",
+    "@types/shelljs": "^0.8.5",
     "@types/supertest": "^2.0.7",
     "jest": "^24.7.1",
     "supertest": "^4.0.2",
