@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 import {
   validateAuthDetails,
@@ -26,6 +26,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use((req: Request, res: Response) => {
+  console.log(req.body);
+});
 app.post('/v1/login', validateAuthDetails, validatePassword, login);
 app.post('/v1/signup', validateAuthDetails, signup);
 app.post('/v1/resetpassword', validateEmail, resetPassword);
