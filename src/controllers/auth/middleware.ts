@@ -114,3 +114,21 @@ export const validateEmail = async (req: Request, res: Response, next: NextFunct
   }
   return next();
 };
+
+export const validatePasswordReset = async (req: Request, res: Response, next: NextFunction) => {
+  const schema = joi.object().keys({
+    email: joi
+      .string()
+      .email()
+      .required(),
+    newPassword: joi.string().min(6).required(),
+  });
+  const validation = joi.validate(req.body, schema);
+
+  if (validation.error) {
+    return res
+      .status(400)
+      .json({ success: false, error: validation.error.details[0].message });
+  }
+  return next();
+};

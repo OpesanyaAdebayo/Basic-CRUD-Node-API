@@ -7,6 +7,7 @@ import {
   validateChangePassword,
   validateEmail,
   validatePassword,
+  validatePasswordReset,
   validateUserToken
 } from './controllers/auth/middleware';
 
@@ -35,6 +36,6 @@ app.post('/v1/resetpasswordwithlink', resetPasswordWithLink);
 
 app.use(validateUserToken);
 app.post('/v1/changepassword', validateChangePassword, changePassword);
-app.post('/v1/setPasswordAfterReset', setPasswordAfterReset);
+app.post('/v1/setpasswordafterreset', validatePasswordReset, setPasswordAfterReset);
 
 export default app;
