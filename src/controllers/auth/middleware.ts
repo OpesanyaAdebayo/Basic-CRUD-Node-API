@@ -81,10 +81,6 @@ export const validatePassword = async (req: Request, res: Response, next: NextFu
 
 export const validateChangePassword = async (req: Request, res: Response, next: NextFunction) => {
   const schema = joi.object().keys({
-    email: joi
-      .string()
-      .email()
-      .required(),
     newPassword: joi.string().min(6).required(),
     oldPassword: joi.string().min(6).required(),
   });
