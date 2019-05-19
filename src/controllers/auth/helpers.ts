@@ -9,7 +9,7 @@ const secret: Secret = TOKEN_SECRET!;
 
 export const verifyToken = (token: string) => {
   return new Promise((resolve, reject) => {
-    jsonwebtoken.verify(token, secret, (err: Error, decoded: string | object) => {
+    jsonwebtoken.verify(token, secret, (err: Error, decoded) => {
       if (err) {
         return reject(err);
       }

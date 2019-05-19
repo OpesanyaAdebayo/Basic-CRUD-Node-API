@@ -3,6 +3,12 @@ import joi from 'joi';
 import { User } from '../../models/User';
 import { verifyToken } from './helpers';
 
+interface IVerifiedToken {
+  email?: string;
+  iat?: string;
+  exp?: string;
+}
+
 export const validateUserToken = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers.authorization) {
     return res.status(403).json({ success: false, error: 'Authorization Token is required.' });
@@ -23,7 +29,8 @@ export const validateUserToken = async (req: Request, res: Response, next: NextF
   }
   try {
     const [, token, ] = authorization!.split('Bearer ');
-    req.userEmail = await verifyToken(token);
+    const getEmailFromToken: IVerifiedToken = await verifyToken(token);
+    req.userEmail = getEmailFromToken.email;
     return next();
   } catch (error) {
     return res.status(403).json({ success: false, error: 'Invalid or no Authorization Token was provided.' });
