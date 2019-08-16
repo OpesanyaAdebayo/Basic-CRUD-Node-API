@@ -25,7 +25,7 @@
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
-      "runtimeVersion": "12.0.0"
+      "runtimeVersion": "9.9.0"
     }
   ]
 }
