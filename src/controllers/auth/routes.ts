@@ -3,13 +3,13 @@ import { User } from '../../models/User';
 import {
   generateEmailForPasswordReset,
   generateNoEmailForPasswordReset,
-  sendEmail
+  IMailDetails,
+  sendEmail,
 } from '../email/helpers';
 
 import { redisAsync } from '../../config/redis';
-import { NODEMAILER_USER } from '../../util/secrets';
+import { NODEMAILER_USER, RESET_PASSWORD_LINK } from '../../util/secrets';
 import { generateRandomString, hashPasswordPromise,  } from '../auth/helpers';
-import { IMailDetails } from '../email/helpers';
 import { createToken } from './helpers';
 
 export const login = async (req: Request, res: Response) => {
@@ -108,7 +108,7 @@ export const resetPassword = async (req: Request, res: Response) => {
     const hashedToken = await hashPasswordPromise(randomToken, 12);
     await redisAsync.hmset([randomToken, 'token', hashedToken, 'email', email, ]);
     await redisAsync.expire(randomToken, 3600);
-    const passwordResetLink  = `https://stock-system-frontend.herokuapp.com/auth/resetpassword/${randomToken}`;
+    const passwordResetLink  = `${RESET_PASSWORD_LINK}/${randomToken}`;
     const emailToUser = generateEmailForPasswordReset(passwordResetLink);
     const emailOptions = {
       from: NODEMAILER_USER,
