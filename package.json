@@ -35,7 +35,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.5",
     "nodemailer": "^6.1.1",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.3",
     "redis": "^2.8.0",
     "shelljs": "^0.8.3",
     "ts-node": "^8.1.0",
