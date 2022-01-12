@@ -37,7 +37,7 @@
     "nodemailer": "^6.1.1",
     "nunjucks": "^3.2.0",
     "redis": "^2.8.0",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-eslint-rules": "^5.4.0",
