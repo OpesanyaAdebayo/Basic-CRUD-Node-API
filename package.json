@@ -34,7 +34,7 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.5",
-    "nodemailer": "^6.1.1",
+    "nodemailer": "^6.9.9",
     "nunjucks": "^3.2.0",
     "redis": "^2.8.0",
     "shelljs": "^0.8.3",
